@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Hesham Elmasry is a full stack developer building robust .NET, Angular, and SQL Server products with clean architecture and business-first thinking.">
+    <meta name="keywords"
+        content="Hesham Elmasry, Full Stack Developer, .NET Developer, Angular Developer, SQL Server, ASP.NET Core, Portfolio">
+    <meta name="author" content="Hesham Elmasry">
+    <title>Hesham Elmasry | Full Stack Developer</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-elevated: #121925;
+            --bg-panel: rgba(16, 24, 37, 0.78);
+            --bg-soft: rgba(255, 255, 255, 0.04);
+            --surface: #182232;
+            --surface-strong: #1e2c40;
+            --text: #f3f4ee;
+            --text-secondary: #cad2dd;
+            --text-muted: #98a5b6;
+            --line: rgba(255, 255, 255, 0.09);
+            --line-strong: rgba(255, 255, 255, 0.16);
+            --accent: #5fd1c2;
+            --accent-strong: #7be6d8;
+            --accent-soft: rgba(95, 209, 194, 0.14);
+            --accent-alt: #f29d52;
+            --accent-alt-soft: rgba(242, 157, 82, 0.14);
+            --success: #74d680;
+            --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+            --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.18);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --header-height: 84px;
+            --section-padding: 110px;
+            --container: 1200px;
+            --font-sans: "Sora", system-ui, sans-serif;
+            --font-mono: "IBM Plex Mono", monospace;
+            --transition: 220ms ease;
+        }
+
+        body.light-theme {
+            --bg: #f2ede3;
+            --bg-elevated: #faf6ef;
+            --bg-panel: rgba(255, 251, 245, 0.82);
+            --bg-soft: rgba(16, 24, 37, 0.04);
+            --surface: #fffdf8;
+            --surface-strong: #f6efe2;
+            --text: #1d2430;
+            --text-secondary: #384558;
+            --text-muted: #667488;
+            --line: rgba(16, 24, 37, 0.08);
+            --line-strong: rgba(16, 24, 37, 0.14);
+            --accent: #0d8c85;
+            --accent-strong: #0a716b;
+            --accent-soft: rgba(13, 140, 133, 0.12);
+            --accent-alt: #cc7b31;
+            --accent-alt-soft: rgba(204, 123, 49, 0.12);
+            --shadow: 0 24px 50px rgba(48, 39, 27, 0.08);
+            --shadow-soft: 0 12px 24px rgba(48, 39, 27, 0.05);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--header-height) + 18px);
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-sans);
+            color: var(--text-secondary);
+            background:
+                radial-gradient(circle at top left, rgba(95, 209, 194, 0.14), transparent 28%),
+                radial-gradient(circle at 85% 15%, rgba(242, 157, 82, 0.14), transparent 24%),
+                linear-gradient(180deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+            background-size: 38px 38px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 88%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body.nav-open {
+            overflow: hidden;
+        }
+
+        body.light-theme::before {
+            background-image:
+                linear-gradient(rgba(16, 24, 37, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 24, 37, 0.04) 1px, transparent 1px);
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #081116;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--accent-soft);
+            outline-offset: 4px;
+        }
+
+        .page-shell {
+            position: relative;
+            z-index: 1;
+        }
+
+        #floatingDots {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.95;
+        }
+
+        .container {
+            width: min(var(--container), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .nav-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+            z-index: 1200;
+        }
+
+        .mobile-nav-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 10, 16, 0.58);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+            z-index: 1080;
+        }
+
+        body.light-theme .mobile-nav-backdrop {
+            background: rgba(29, 36, 48, 0.18);
+        }
+
+        body.nav-open .mobile-nav-backdrop {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1100;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(10, 15, 23, 0.5);
+            border-bottom: 1px solid transparent;
+            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+
+        body.light-theme .header {
+            background: rgba(242, 237, 227, 0.72);
+        }
+
+        .header.scrolled {
+            background: var(--bg-panel);
+            border-color: var(--line);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .header-inner {
+            min-height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--text);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            min-width: 0;
+        }
+
+        .logo-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-family: var(--font-mono);
+            background: linear-gradient(135deg, var(--accent-soft), var(--accent-alt-soft));
+            color: var(--accent);
+            border: 1px solid var(--line);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 16px;
+            border-radius: 999px;
+            color: var(--text-secondary);
+            font-size: 0.94rem;
+            transition: color var(--transition), background var(--transition), transform var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
+            background: var(--bg-soft);
+            transform: translateY(-1px);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle,
+        .hamburger {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--bg-soft);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: transform var(--transition), border-color var(--transition), background var(--transition);
+        }
+
+        .theme-toggle {
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .theme-toggle:hover,
+        .hamburger:hover {
+            transform: translateY(-2px);
+            border-color: var(--line-strong);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        body.light-theme .theme-toggle:hover,
+        body.light-theme .hamburger:hover {
+            background: rgba(16, 24, 37, 0.06);
+        }
+
+        .theme-toggle .icon-light,
+        .theme-toggle .icon-dark {
+            display: none;
+        }
+
+        body.light-theme .theme-toggle .icon-light,
+        body:not(.light-theme) .theme-toggle .icon-dark {
+            display: inline;
+        }
+
+        .hamburger {
+            display: none;
+            padding: 0;
+        }
+
+        .hamburger span {
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--text);
+            display: block;
+            transition: transform var(--transition), opacity var(--transition);
+        }
+
+        .hamburger span + span {
+            margin-top: 4px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        section,
+        footer {
+            padding: var(--section-padding) 0;
+            position: relative;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            border: 1px solid rgba(95, 209, 194, 0.24);
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            margin: 0 0 14px;
+            color: var(--text);
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+        }
+
+        .section-title .accent {
+            color: var(--accent);
+        }
+
+        .section-subtitle {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 62ch;
+        }
+
+        .hero {
+            padding-top: calc(var(--header-height) + 46px);
+            padding-bottom: 72px;
+            min-height: calc(100vh - 20px);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 42px;
+            align-items: center;
+        }
+
+        .hero-copy {
+            max-width: 680px;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--line);
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 24px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 0 7px rgba(116, 214, 128, 0.14);
+        }
+
+        .hero-title {
+            margin: 0 0 20px;
+            color: var(--text);
+            font-size: clamp(2.9rem, 7vw, 5.8rem);
+            line-height: 0.98;
+            letter-spacing: -0.06em;
+        }
+
+        .hero-title .accent-line {
+            display: block;
+            color: var(--accent);
+        }
+
+        .typing-container {
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 18px;
+            color: var(--accent-alt);
+            font-family: var(--font-mono);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+        }
+
+        .typing-cursor {
+            width: 3px;
+            height: 1.15em;
+            border-radius: 4px;
+            background: currentColor;
+            animation: blink 0.85s infinite;
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .hero-description {
+            margin: 0;
+            max-width: 60ch;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 32px 0 28px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 54px;
+            padding: 0 22px;
+            border-radius: 18px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            color: #071116;
+            background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+            box-shadow: 0 18px 36px rgba(95, 209, 194, 0.24);
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            background: transparent;
+            border-color: var(--line-strong);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-soft);
+        }
+
+        .hero-points {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .hero-point {
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--line);
+        }
+
+        .hero-point strong {
+            display: block;
+            color: var(--text);
+            font-size: 0.96rem;
+            margin-bottom: 6px;
+        }
+
+        .hero-point span {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-card {
+            position: relative;
+            padding: 26px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        body.light-theme .hero-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.78));
+        }
+
+        .hero-card::before,
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            border-radius: 999px;
+            pointer-events: none;
+        }
+
+        .hero-card::before {
+            width: 180px;
+            height: 180px;
+            background: rgba(95, 209, 194, 0.16);
+            top: -60px;
+            right: -50px;
+            filter: blur(6px);
+        }
+
+        .hero-card::after {
+            width: 120px;
+            height: 120px;
+            background: rgba(242, 157, 82, 0.16);
+            left: -40px;
+            bottom: -30px;
+            filter: blur(4px);
+        }
+
+        .portrait-wrap {
+            position: relative;
+            border-radius: 26px;
+            overflow: hidden;
+            margin-bottom: 22px;
+            border: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(95, 209, 194, 0.18), transparent);
+        }
+
+        .portrait-wrap img {
+            width: 100%;
+            aspect-ratio: 4 / 4.6;
+            object-fit: cover;
+        }
+
+        .portrait-badge {
+            position: absolute;
+            left: 18px;
+            bottom: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(8, 15, 22, 0.7);
+            color: #f6fbff;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            font-size: 0.82rem;
+        }
+
+        .hero-card-meta {
+            display: grid;
+            gap: 16px;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .meta-label {
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .meta-value {
+            color: var(--text);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .trust-strip {
+            padding-top: 0;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .trust-card {
+            padding: 26px 22px;
+            border-radius: 24px;
+            background: var(--bg-panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .trust-card strong {
+            display: block;
+            color: var(--text);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .trust-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.93rem;
+        }
+
+        .about-grid,
+        .focus-grid,
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .about-copy p,
+        .focus-card p,
+        .project-copy p,
+        .contact-panel p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .about-copy p + p {
+            margin-top: 18px;
+        }
+
+        .check-list,
+        .project-list,
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 22px 0 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .check-list li,
+        .project-list li,
+        .contact-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            color: var(--text-secondary);
+        }
+
+        .check-list li::before,
+        .project-list li::before,
+        .contact-list li::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            margin-top: 8px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+        }
+
+        .fact-card {
+            display: grid;
+            gap: 16px;
+        }
+
+        .fact-badge {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            gap: 10px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: var(--bg-soft);
+            color: var(--text);
+            border: 1px solid var(--line);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .fact-block {
+            padding: 20px;
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
+            border: 1px solid var(--line);
+        }
+
+        .fact-block strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .fact-block p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .focus-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .focus-card {
+            position: relative;
+            padding: 28px;
+            border-radius: 28px;
+            background: var(--bg-panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+        }
+
+        .focus-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+        }
+
+        .focus-card h3,
+        .skill-card h3,
+        .project-copy h3,
+        .process-card h3,
+        .contact-panel h3 {
+            margin: 0 0 12px;
+            color: var(--text);
+            font-size: 1.2rem;
+        }
+
+        .focus-meta {
+            margin-top: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .process {
+            overflow: hidden;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .process-card {
+            position: relative;
+            padding: 28px 24px;
+            border-radius: 24px;
+            background: var(--bg-panel);
+            border: 1px solid var(--line);
+        }
+
+        .process-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            margin-bottom: 18px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent-soft), var(--accent-alt-soft));
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .process-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .skills-grid,
+        .projects-grid {
+            display: grid;
+            gap: 22px;
+        }
+
+        .skills-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .skill-card,
+        .project-card {
+            border-radius: 28px;
+            background: var(--bg-panel);
+            border: 1px solid var(--line);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .skill-card {
+            padding: 28px;
+        }
+
+        .skill-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--accent-soft), var(--accent-alt-soft));
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tags span,
+        .project-tags span {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            color: var(--text-secondary);
+            font-size: 0.84rem;
+        }
+
+        .projects-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .project-visual {
+            min-height: 180px;
+            padding: 26px;
+            display: flex;
+            align-items: flex-end;
+            background:
+                linear-gradient(135deg, rgba(95, 209, 194, 0.22), rgba(242, 157, 82, 0.22)),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent);
+            color: var(--text);
+        }
+
+        .project-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            background: rgba(8, 15, 22, 0.58);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .project-copy {
+            padding: 28px;
+        }
+
+        .project-copy p {
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .contact-grid {
+            align-items: stretch;
+        }
+
+        .contact-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-links {
+            display: grid;
+            gap: 14px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: var(--bg-soft);
+            transition: transform var(--transition), border-color var(--transition), background var(--transition);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            border-color: var(--line-strong);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        body.light-theme .contact-link:hover {
+            background: rgba(16, 24, 37, 0.04);
+        }
+
+        .contact-link strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .contact-link span {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .contact-arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
+            flex: 0 0 auto;
+        }
+
+        .availability-card {
+            display: grid;
+            gap: 18px;
+        }
+
+        .availability-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .availability-row:last-child {
+            border-bottom: 0;
+        }
+
+        .availability-row span {
+            color: var(--text-muted);
+        }
+
+        .availability-row strong {
+            color: var(--text);
+            text-align: right;
+        }
+
+        .footer-bottom {
+            padding: 26px 0 34px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--line);
+            margin-top: 40px;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 52px;
+            height: 52px;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            background: var(--bg-panel);
+            color: var(--text);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            opacity: 0;
+            transform: translateY(16px);
+            pointer-events: none;
+            transition: opacity var(--transition), transform var(--transition), border-color var(--transition);
+            z-index: 1100;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .scroll-to-top:hover {
+            border-color: var(--line-strong);
+        }
+
+        @media (max-width: 1100px) {
+            .hero-grid,
+            .about-grid,
+            .contact-grid,
+            .focus-grid,
+            .projects-grid,
+            .process-grid,
+            .trust-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                max-width: 520px;
+            }
+
+            .hero-point,
+            .trust-card,
+            .focus-card,
+            .process-card,
+            .skill-card,
+            .project-card {
+                max-width: none;
+            }
+
+            .hero-points {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 860px) {
+            :root {
+                --header-height: 76px;
+                --section-padding: 84px;
+            }
+
+            .hamburger {
+                display: grid;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: calc(var(--header-height) + 8px);
+                right: 16px;
+                left: 16px;
+                display: grid;
+                gap: 10px;
+                padding: 16px;
+                border-radius: 28px;
+                background: rgba(11, 17, 24, 0.96);
+                border: 1px solid var(--line);
+                box-shadow: var(--shadow);
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(-12px);
+                transition: opacity var(--transition), transform var(--transition);
+                max-height: calc(100vh - var(--header-height) - 24px);
+                overflow-y: auto;
+            }
+
+            body.light-theme .nav-links {
+                background: rgba(250, 246, 239, 0.97);
+            }
+
+            .nav-links.open {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
+
+            .nav-links a {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 15px 16px;
+                border-radius: 18px;
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            body.light-theme .nav-links a {
+                background: rgba(16, 24, 37, 0.03);
+            }
+
+            .nav-links a.active {
+                background: linear-gradient(135deg, rgba(95, 209, 194, 0.16), rgba(242, 157, 82, 0.12));
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-grid {
+                gap: 28px;
+            }
+
+            .hero-title {
+                font-size: clamp(2.6rem, 14vw, 4.2rem);
+            }
+
+            .hero-description,
+            .section-subtitle {
+                font-size: 0.96rem;
+            }
+        }
+
+        @media (max-width: 560px) {
+            :root {
+                --header-height: 72px;
+                --section-padding: 72px;
+            }
+
+            .container {
+                width: min(var(--container), calc(100% - 26px));
+            }
+
+            .header-inner {
+                gap: 12px;
+            }
+
+            .logo {
+                gap: 8px;
+                font-size: 0.8rem;
+                letter-spacing: 0.02em;
+            }
+
+            .logo-mark {
+                width: 34px;
+                height: 34px;
+                border-radius: 10px;
+            }
+
+            .header-right,
+            .header-controls {
+                gap: 8px;
+            }
+
+            .theme-toggle,
+            .hamburger {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+            }
+
+            .theme-toggle {
+                font-size: 0.58rem;
+            }
+
+            .panel,
+            .hero-card,
+            .focus-card,
+            .skill-card,
+            .project-copy,
+            .project-visual,
+            .process-card,
+            .trust-card {
+                padding: 22px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .meta-row,
+            .availability-row,
+            .contact-link {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .meta-value,
+            .availability-row strong {
+                text-align: left;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            #floatingDots {
+                display: none;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-progress" id="navProgress"></div>
+    <canvas id="floatingDots" aria-hidden="true"></canvas>
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+
+    <div class="page-shell">
+        <header class="header" id="header" role="banner">
+            <div class="container header-inner">
+                <a href="#hero" class="logo" aria-label="Hesham Elmasry home">
+                    <span class="logo-mark">HE</span>
+                    Hesham Elmasry
+                </a>
+
+                <div class="header-right">
+                    <nav aria-label="Main navigation">
+                        <ul class="nav-links" id="navLinks">
+                            <li><a href="#hero" class="active" data-section="hero">Home</a></li>
+                            <li><a href="#about" data-section="about">About</a></li>
+                            <li><a href="#focus" data-section="focus">Focus</a></li>
+                            <li><a href="#process" data-section="process">Process</a></li>
+                            <li><a href="#skills" data-section="skills">Skills</a></li>
+                            <li><a href="#projects" data-section="projects">Projects</a></li>
+                            <li><a href="#contact" data-section="contact">Contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-controls">
+                        <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                            <span class="icon-dark" aria-hidden="true">DK</span>
+                            <span class="icon-light" aria-hidden="true">LT</span>
+                        </button>
+                        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="hero" aria-label="Hero section">
+                <div class="container hero-grid">
+                    <div class="hero-copy" data-aos="fade-up" data-aos-duration="700">
+                        <div class="hero-kicker">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            Available for product teams and freelance builds
+                        </div>
+                        <h1 class="hero-title">
+                            Backend-first products
+                            <span class="accent-line">built to stay fast</span>
+                        </h1>
+                        <div class="typing-container" aria-live="polite">
+                            <span class="typing-text" id="typingText"></span>
+                            <span class="typing-cursor" aria-hidden="true"></span>
+                        </div>
+                        <p class="hero-description">
+                            I help teams turn messy business requirements into clean, scalable software using
+                            <strong>.NET Core</strong>, <strong>Angular</strong>, and <strong>SQL Server</strong>.
+                            The goal is not just a working app. It is a product that stays maintainable, performs well,
+                            and supports day-to-day operations without friction.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#projects" class="btn btn-primary">See featured work</a>
+                            <a href="#contact" class="btn btn-secondary">Start a conversation</a>
+                        </div>
+                        <div class="hero-points">
+                            <div class="hero-point">
+                                <strong>Architecture that lasts</strong>
+                                <span>Clean service boundaries, scalable APIs, and practical abstractions.</span>
+                            </div>
+                            <div class="hero-point">
+                                <strong>Ops-aware delivery</strong>
+                                <span>Systems designed with reporting, permissions, and real workflows in mind.</span>
+                            </div>
+                            <div class="hero-point">
+                                <strong>Clear collaboration</strong>
+                                <span>Thoughtful communication from kickoff through deployment and handoff.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual" data-aos="fade-left" data-aos-duration="800">
+                        <div class="hero-card">
+                            <div class="portrait-wrap">
+                                <img src="Hesham.jpeg" alt="Portrait of Hesham Elmasry">
+                                <div class="portrait-badge">Full Stack Developer</div>
+                            </div>
+                            <div class="hero-card-meta">
+                                <div class="meta-row">
+                                    <div>
+                                        <div class="meta-label">Primary stack</div>
+                                        <div class="meta-value">.NET Core, Angular, SQL Server</div>
+                                    </div>
+                                </div>
+                                <div class="meta-row">
+                                    <div>
+                                        <div class="meta-label">Best fit</div>
+                                        <div class="meta-value">Internal tools, commerce flows, operations platforms</div>
+                                    </div>
+                                </div>
+                                <div class="meta-row">
+                                    <div>
+                                        <div class="meta-label">Working style</div>
+                                        <div class="meta-value">Structured, responsive, focused on maintainability</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trust-strip" aria-label="Portfolio highlights">
+                <div class="container trust-grid">
+                    <div class="trust-card" data-aos="fade-up" data-aos-delay="0">
+                        <strong>Business-first engineering</strong>
+                        <p>Features are shaped around operations, clarity, and measurable business usefulness.</p>
+                    </div>
+                    <div class="trust-card" data-aos="fade-up" data-aos-delay="80">
+                        <strong>Performance-minded backend work</strong>
+                        <p>APIs, queries, and application structure are designed to stay responsive under load.</p>
+                    </div>
+                    <div class="trust-card" data-aos="fade-up" data-aos-delay="160">
+                        <strong>Modern full-stack execution</strong>
+                        <p>Reliable backend systems paired with admin tools and interfaces teams can actually use.</p>
+                    </div>
+                    <div class="trust-card" data-aos="fade-up" data-aos-delay="240">
+                        <strong>Clean handoff and growth</strong>
+                        <p>Codebases stay readable so future features do not turn into expensive rewrites.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" aria-label="About Hesham">
+                <div class="container">
+                    <div class="section-heading" data-aos="fade-up">
+                        <span class="section-eyebrow">About</span>
+                        <h2 class="section-title">I build software that makes <span class="accent">operations feel lighter</span>.</h2>
+                        <p class="section-subtitle">
+                            The strongest projects are not just technically clean. They help teams move faster, reduce
+                            manual overhead, and make the next feature easier to ship.
+                        </p>
+                    </div>
+
+                    <div class="about-grid">
+                        <div class="panel about-copy" data-aos="fade-up" data-aos-delay="80">
+                            <p>
+                                My background is centered on turning operational complexity into usable digital systems.
+                                That includes ordering workflows, inventory tools, staff-facing dashboards, and the APIs
+                                that connect everything together.
+                            </p>
+                            <p>
+                                I am most comfortable in projects where architecture matters, the database design needs
+                                to be thoughtful, and the end result has to keep working well as a business grows.
+                            </p>
+                            <ul class="check-list">
+                                <li>Translate fuzzy business requirements into stable technical plans.</li>
+                                <li>Balance clean architecture with practical shipping speed.</li>
+                                <li>Design systems that are easier to extend instead of harder over time.</li>
+                            </ul>
+                        </div>
+
+                        <div class="panel fact-card" data-aos="fade-up" data-aos-delay="160">
+                            <span class="fact-badge">What matters in my work</span>
+                            <div class="fact-block">
+                                <strong>Maintainability over temporary cleverness</strong>
+                                <p>Readable structures, predictable conventions, and code other developers can grow confidently.</p>
+                            </div>
+                            <div class="fact-block">
+                                <strong>Performance where it actually counts</strong>
+                                <p>Query tuning, payload discipline, and backend decisions that reduce friction for real users.</p>
+                            </div>
+                            <div class="fact-block">
+                                <strong>Interfaces that support the workflow</strong>
+                                <p>Admin and internal screens shaped around tasks, visibility, and quick decision-making.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="focus" aria-label="Work focus areas">
+                <div class="container">
+                    <div class="section-heading" data-aos="fade-up">
+                        <span class="section-eyebrow">Focus Areas</span>
+                        <h2 class="section-title">Where I add the most <span class="accent">value</span>.</h2>
+                        <p class="section-subtitle">
+                            These are the kinds of systems and problem spaces where I do my best work and can create
+                            momentum quickly.
+                        </p>
+                    </div>
+
+                    <div class="focus-grid">
+                        <article class="focus-card" data-aos="fade-up" data-aos-delay="60">
+                            <h3>Commerce and order flow</h3>
+                            <p>
+                                Product catalogs, checkout logic, order lifecycles, and the backend rules needed to
+                                keep everything synchronized and reliable.
+                            </p>
+                            <div class="focus-meta">High-volume workflows</div>
+                        </article>
+                        <article class="focus-card" data-aos="fade-up" data-aos-delay="140">
+                            <h3>Operations and admin platforms</h3>
+                            <p>
+                                Dashboards, inventory management, staff tooling, role-based access, and reporting for
+                                teams that need clarity every day.
+                            </p>
+                            <div class="focus-meta">Internal tools with real business impact</div>
+                        </article>
+                        <article class="focus-card" data-aos="fade-up" data-aos-delay="220">
+                            <h3>API and data architecture</h3>
+                            <p>
+                                Well-structured ASP.NET Core services, integration-friendly endpoints, and SQL models
+                                that support scale without becoming fragile.
+                            </p>
+                            <div class="focus-meta">Clean contracts and durable structure</div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="process" id="process" aria-label="Working process">
+                <div class="container">
+                    <div class="section-heading" data-aos="fade-up">
+                        <span class="section-eyebrow">Process</span>
+                        <h2 class="section-title">A delivery style built around <span class="accent">clarity and momentum</span>.</h2>
+                        <p class="section-subtitle">
+                            I prefer a process that keeps the work easy to understand for everyone involved, not just
+                            for developers inside the codebase.
+                        </p>
+                    </div>
+
+                    <div class="process-grid">
+                        <div class="process-card" data-aos="fade-up" data-aos-delay="0">
+                            <div class="process-number">01</div>
+                            <h3>Map the problem</h3>
+                            <p>Understand the workflow, constraints, users, and business rules before building fast in the wrong direction.</p>
+                        </div>
+                        <div class="process-card" data-aos="fade-up" data-aos-delay="80">
+                            <div class="process-number">02</div>
+                            <h3>Shape the foundation</h3>
+                            <p>Choose structures that support growth: service boundaries, database design, and API contracts.</p>
+                        </div>
+                        <div class="process-card" data-aos="fade-up" data-aos-delay="160">
+                            <div class="process-number">03</div>
+                            <h3>Build for the workflow</h3>
+                            <p>Focus implementation on real user tasks so the product feels useful immediately, not just technically complete.</p>
+                        </div>
+                        <div class="process-card" data-aos="fade-up" data-aos-delay="240">
+                            <div class="process-number">04</div>
+                            <h3>Refine and hand off</h3>
+                            <p>Polish performance, edge cases, and maintainability so the next phase of the product starts from a strong base.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" aria-label="Technical skills">
+                <div class="container">
+                    <div class="section-heading" data-aos="fade-up">
+                        <span class="section-eyebrow">Skills</span>
+                        <h2 class="section-title">A stack chosen for <span class="accent">scalable business apps</span>.</h2>
+                        <p class="section-subtitle">
+                            I work across backend, frontend, and data layers with a preference for clear systems and
+                            practical tooling over unnecessary complexity.
+                        </p>
+                    </div>
+
+                    <div class="skills-grid">
+                        <article class="skill-card" data-aos="fade-up" data-aos-delay="50">
+                            <div class="skill-head">
+                                <div>
+                                    <h3>Backend engineering</h3>
+                                    <p>Service design, business logic, and maintainable application structure.</p>
+                                </div>
+                                <div class="skill-icon">BE</div>
+                            </div>
+                            <div class="skill-tags">
+                                <span>.NET Core</span>
+                                <span>ASP.NET Core</span>
+                                <span>C#</span>
+                                <span>Entity Framework Core</span>
+                                <span>REST APIs</span>
+                                <span>SignalR</span>
+                            </div>
+                        </article>
+
+                        <article class="skill-card" data-aos="fade-up" data-aos-delay="120">
+                            <div class="skill-head">
+                                <div>
+                                    <h3>Frontend delivery</h3>
+                                    <p>Interfaces that support workflows clearly and remain easy to maintain.</p>
+                                </div>
+                                <div class="skill-icon">FE</div>
+                            </div>
+                            <div class="skill-tags">
+                                <span>Angular</span>
+                                <span>TypeScript</span>
+                                <span>JavaScript</span>
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>Responsive UI</span>
+                            </div>
+                        </article>
+
+                        <article class="skill-card" data-aos="fade-up" data-aos-delay="190">
+                            <div class="skill-head">
+                                <div>
+                                    <h3>Data and integrations</h3>
+                                    <p>Database models and interfaces that keep systems performant and connected.</p>
+                                </div>
+                                <div class="skill-icon">DB</div>
+                            </div>
+                            <div class="skill-tags">
+                                <span>SQL Server</span>
+                                <span>LINQ</span>
+                                <span>Query optimization</span>
+                                <span>Schema design</span>
+                                <span>Third-party APIs</span>
+                                <span>Reporting workflows</span>
+                            </div>
+                        </article>
+
+                        <article class="skill-card" data-aos="fade-up" data-aos-delay="260">
+                            <div class="skill-head">
+                                <div>
+                                    <h3>Tooling and delivery</h3>
+                                    <p>Practical collaboration, source control, and deploy-ready workflows.</p>
+                                </div>
+                                <div class="skill-icon">DX</div>
+                            </div>
+                            <div class="skill-tags">
+                                <span>Git</span>
+                                <span>GitHub</span>
+                                <span>Docker</span>
+                                <span>Azure</span>
+                                <span>Postman</span>
+                                <span>CI/CD</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" aria-label="Featured projects">
+                <div class="container">
+                    <div class="section-heading" data-aos="fade-up">
+                        <span class="section-eyebrow">Projects</span>
+                        <h2 class="section-title">Selected work shaped around <span class="accent">real workflows</span>.</h2>
+                        <p class="section-subtitle">
+                            Each project below reflects the type of systems I enjoy building most: operationally useful,
+                            technically clean, and ready to grow.
+                        </p>
+                    </div>
+
+                    <div class="projects-grid">
+                        <article class="project-card" data-aos="fade-up" data-aos-delay="40">
+                            <div class="project-visual">
+                                <span class="project-chip">Commerce Platform</span>
+                            </div>
+                            <div class="project-copy">
+                                <h3>E-commerce system with structured order flow</h3>
+                                <p>
+                                    A commerce platform designed around reliable catalog management, secure checkout,
+                                    and backend processes that keep inventory and orders aligned across the system.
+                                </p>
+                                <ul class="project-list">
+                                    <li>Focused on robust backend workflows and maintainable service boundaries.</li>
+                                    <li>Shaped for admin visibility, product updates, and order lifecycle clarity.</li>
+                                    <li>Built to support future integrations and scale without a full rewrite.</li>
+                                </ul>
+                                <div class="project-tags">
+                                    <span>.NET Core</span>
+                                    <span>Angular</span>
+                                    <span>SQL Server</span>
+                                    <span>REST APIs</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card" data-aos="fade-up" data-aos-delay="120">
+                            <div class="project-visual">
+                                <span class="project-chip">Operations Platform</span>
+                            </div>
+                            <div class="project-copy">
+                                <h3>Inventory and staff management workspace</h3>
+                                <p>
+                                    An internal platform for teams who need stock visibility, access control, and
+                                    decision-ready dashboards without wasting time across disconnected tools.
+                                </p>
+                                <ul class="project-list">
+                                    <li>Designed around operational tasks instead of generic dashboard patterns.</li>
+                                    <li>Balanced role permissions, reporting, and day-to-day usability.</li>
+                                    <li>Optimized for speed in the places managers and staff touch most often.</li>
+                                </ul>
+                                <div class="project-tags">
+                                    <span>ASP.NET Core</span>
+                                    <span>Angular</span>
+                                    <span>SQL Server</span>
+                                    <span>SignalR</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="project-visual">
+                                <span class="project-chip">Workflow Engine</span>
+                            </div>
+                            <div class="project-copy">
+                                <h3>Order processing and integration-ready backend</h3>
+                                <p>
+                                    A backend-heavy product focused on workflow automation, dependable status changes,
+                                    and clean extension points for partner services or external systems.
+                                </p>
+                                <ul class="project-list">
+                                    <li>Built with clear contracts to make third-party integration less brittle.</li>
+                                    <li>Structured for complex business rules without turning the codebase chaotic.</li>
+                                    <li>Emphasized traceability and maintainability across the order lifecycle.</li>
+                                </ul>
+                                <div class="project-tags">
+                                    <span>.NET Core</span>
+                                    <span>Clean Architecture</span>
+                                    <span>SQL Server</span>
+                                    <span>Integrations</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="contact" aria-label="Contact Hesham">
+                <div class="container">
+                    <div class="section-heading" data-aos="fade-up">
+                        <span class="section-eyebrow">Contact</span>
+                        <h2 class="section-title">Need a developer who can bring <span class="accent">structure to complexity</span>?</h2>
+                        <p class="section-subtitle">
+                            If you are building a business app, internal platform, or backend-heavy product, I would be
+                            glad to hear what you are working on.
+                        </p>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="panel contact-panel" data-aos="fade-up" data-aos-delay="60">
+                            <div>
+                                <h3>Direct contact</h3>
+                                <p>
+                                    The fastest way to reach me is by email or WhatsApp. LinkedIn and GitHub are also
+                                    available if you want to review my background or previous work.
+                                </p>
+                            </div>
+
+                            <div class="contact-links">
+                                <a href="mailto:heshamelmasry392@gmail.com" class="contact-link" aria-label="Email Hesham">
+                                    <div>
+                                        <strong>Email</strong>
+                                        <span>heshamelmasry392@gmail.com</span>
+                                    </div>
+                                    <span class="contact-arrow" aria-hidden="true">↗</span>
+                                </a>
+                                <a href="https://wa.me/201202566693" class="contact-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Chat with Hesham on WhatsApp">
+                                    <div>
+                                        <strong>WhatsApp</strong>
+                                        <span>+20 120 256 6693</span>
+                                    </div>
+                                    <span class="contact-arrow" aria-hidden="true">↗</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/hesham-elmasry-9b86223a4" class="contact-link"
+                                    target="_blank" rel="noopener noreferrer" aria-label="Open Hesham's LinkedIn">
+                                    <div>
+                                        <strong>LinkedIn</strong>
+                                        <span>Professional profile and network</span>
+                                    </div>
+                                    <span class="contact-arrow" aria-hidden="true">↗</span>
+                                </a>
+                                <a href="https://github.com/hesham340" class="contact-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Open Hesham's GitHub">
+                                    <div>
+                                        <strong>GitHub</strong>
+                                        <span>Code samples and public repositories</span>
+                                    </div>
+                                    <span class="contact-arrow" aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="panel availability-card" data-aos="fade-up" data-aos-delay="140">
+                            <h3>Working preferences</h3>
+                            <div class="availability-row">
+                                <span>Role fit</span>
+                                <strong>Full stack, backend-heavy, product-oriented work</strong>
+                            </div>
+                            <div class="availability-row">
+                                <span>Best project types</span>
+                                <strong>Operations tools, admin platforms, commerce and workflow systems</strong>
+                            </div>
+                            <div class="availability-row">
+                                <span>Strengths</span>
+                                <strong>Architecture thinking, clear delivery, maintainable implementation</strong>
+                            </div>
+                            <div class="availability-row">
+                                <span>Location</span>
+                                <strong>Egypt, open to remote collaboration</strong>
+                            </div>
+                            <ul class="contact-list">
+                                <li>I care about clarity in requirements, code quality, and products that age well.</li>
+                                <li>I work best where backend decisions and workflow design have real business impact.</li>
+                                <li>I aim to leave teams with systems they can confidently keep building on.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom">
+                        © <span id="currentYear"></span> Hesham Elmasry. Designed to feel clear, modern, and ready for serious work.
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top" title="Back to top">↑</button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        (function () {
+            const body = document.body;
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const savedTheme = localStorage.getItem('portfolio-theme');
+
+            if (savedTheme === 'light') {
+                body.classList.add('light-theme');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                localStorage.setItem('portfolio-theme', body.classList.contains('light-theme') ? 'light' : 'dark');
+            });
+
+            AOS.init({
+                duration: 650,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 70
+            });
+
+            const typingTextEl = document.getElementById('typingText');
+            const titles = [
+                'Full Stack Developer',
+                '.NET Core Specialist',
+                'Angular Builder',
+                'SQL Server Problem Solver',
+                'API-Focused Engineer'
+            ];
+
+            let titleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingSpeed = 90;
+            const deletingSpeed = 45;
+            const pauseAfterType = 1500;
+            const pauseAfterDelete = 350;
+
+            function typeEffect() {
+                const currentTitle = titles[titleIndex];
+
+                if (!isDeleting) {
+                    typingTextEl.textContent = currentTitle.substring(0, charIndex + 1);
+                    charIndex += 1;
+
+                    if (charIndex === currentTitle.length) {
+                        isDeleting = true;
+                        setTimeout(typeEffect, pauseAfterType);
+                        return;
+                    }
+
+                    setTimeout(typeEffect, typingSpeed);
+                    return;
+                }
+
+                typingTextEl.textContent = currentTitle.substring(0, charIndex - 1);
+                charIndex -= 1;
+
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    titleIndex = (titleIndex + 1) % titles.length;
+                    setTimeout(typeEffect, pauseAfterDelete);
+                    return;
+                }
+
+                setTimeout(typeEffect, deletingSpeed);
+            }
+
+            setTimeout(typeEffect, 500);
+
+            const header = document.getElementById('header');
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            const navProgress = document.getElementById('navProgress');
+            const navLinksContainer = document.getElementById('navLinks');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const hamburger = document.getElementById('hamburger');
+            const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+            const sections = document.querySelectorAll('section[id], footer[id]');
+
+            function updateHeaderState() {
+                const scrollY = window.scrollY;
+                header.classList.toggle('scrolled', scrollY > 16);
+                scrollToTopBtn.classList.toggle('visible', scrollY > 540);
+            }
+
+            function updateActiveLink() {
+                let currentSectionId = 'hero';
+                const scrollPosition = window.scrollY + window.innerHeight * 0.3;
+
+                sections.forEach((section) => {
+                    if (scrollPosition >= section.offsetTop) {
+                        currentSectionId = section.id;
+                    }
+                });
+
+                navLinks.forEach((link) => {
+                    link.classList.toggle('active', link.dataset.section === currentSectionId);
+                });
+            }
+
+            function updateProgress() {
+                const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+                navProgress.style.width = Math.min(progress, 100) + '%';
+            }
+
+            function openMobileNav() {
+                navLinksContainer.classList.add('open');
+                hamburger.classList.add('active');
+                hamburger.setAttribute('aria-expanded', 'true');
+                body.classList.add('nav-open');
+            }
+
+            function closeMobileNav() {
+                navLinksContainer.classList.remove('open');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                body.classList.remove('nav-open');
+            }
+
+            hamburger.addEventListener('click', () => {
+                if (navLinksContainer.classList.contains('open')) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.addEventListener('click', () => {
+                    closeMobileNav();
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!navLinksContainer.contains(event.target) && !hamburger.contains(event.target)) {
+                    closeMobileNav();
+                }
+            });
+
+            mobileNavBackdrop.addEventListener('click', closeMobileNav);
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeMobileNav();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 860) {
+                    closeMobileNav();
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener('click', function (event) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') {
+                        return;
+                    }
+
+                    const target = document.querySelector(targetId);
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10) + 12;
+                    const targetTop = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                });
+            });
+
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            let ticking = false;
+            function onScroll() {
+                if (ticking) {
+                    return;
+                }
+
+                ticking = true;
+                requestAnimationFrame(() => {
+                    updateHeaderState();
+                    updateActiveLink();
+                    updateProgress();
+                    ticking = false;
+                });
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', updateProgress);
+
+            updateHeaderState();
+            updateActiveLink();
+            updateProgress();
+
+            (function initFloatingDots() {
+                const canvas = document.getElementById('floatingDots');
+                if (!canvas) {
+                    return;
+                }
+
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+                if (prefersReducedMotion.matches) {
+                    canvas.style.display = 'none';
+                    return;
+                }
+
+                const ctx = canvas.getContext('2d');
+                const particles = [];
+                let animationFrameId = null;
+                let width = 0;
+                let height = 0;
+                let dpr = Math.max(1, window.devicePixelRatio || 1);
+
+                function resizeCanvas() {
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    dpr = Math.max(1, window.devicePixelRatio || 1);
+
+                    canvas.width = Math.floor(width * dpr);
+                    canvas.height = Math.floor(height * dpr);
+                    canvas.style.width = width + 'px';
+                    canvas.style.height = height + 'px';
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+
+                function createParticles() {
+                    particles.length = 0;
+                    const count = Math.max(32, Math.floor((width * height) / 18000));
+
+                    for (let index = 0; index < count; index += 1) {
+                        particles.push({
+                            x: Math.random() * width,
+                            y: Math.random() * height,
+                            radius: Math.random() * 2.2 + 0.8,
+                            velocityX: (Math.random() - 0.5) * 4,
+                            velocityY: (Math.random() - 0.5) * 3,
+                            alpha: Math.random() * 0.22 + 0.08
+                        });
+                    }
+                }
+
+                function draw() {
+                    ctx.clearRect(0, 0, width, height);
+
+                    const isLightTheme = body.classList.contains('light-theme');
+                    const baseColor = isLightTheme ? '16, 24, 37' : '255, 255, 255';
+                    const accentColor = isLightTheme ? '13, 140, 133' : '95, 209, 194';
+
+                    particles.forEach((particle, index) => {
+                        particle.x += particle.velocityX;
+                        particle.y += particle.velocityY;
+
+                        if (particle.x < -20) particle.x = width + 20;
+                        if (particle.x > width + 20) particle.x = -20;
+                        if (particle.y < -20) particle.y = height + 20;
+                        if (particle.y > height + 20) particle.y = -20;
+
+                        const useAccent = index % 7 === 0;
+                        const color = useAccent ? accentColor : baseColor;
+                        const alpha = isLightTheme ? particle.alpha * 0.9 : particle.alpha * 0.75;
+
+                        ctx.beginPath();
+                        ctx.fillStyle = `rgba(${color}, ${alpha})`;
+                        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                        ctx.fill();
+                    });
+
+                    animationFrameId = window.requestAnimationFrame(draw);
+                }
+
+                function handleResize() {
+                    resizeCanvas();
+                    createParticles();
+                }
+
+                handleResize();
+                draw();
+
+                window.addEventListener('resize', handleResize);
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        if (animationFrameId) {
+                            window.cancelAnimationFrame(animationFrameId);
+                            animationFrameId = null;
+                        }
+                        return;
+                    }
+
+                    if (!animationFrameId) {
+                        draw();
+                    }
+                });
+            })();
+        })();
+    </script>
+</body>
+
+</html>
